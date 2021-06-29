@@ -29,7 +29,7 @@ public class ProductPageTest extends TestBase {
     public void verifyAddProductToCart() throws InterruptedException {
         productsPage.tapOnProductImage();
         productsPage.tapOnAddToCartButton();
-        productsPage.verifyThatProductHasBeenAddedToCart("ADD TO CART");
+        Assert.assertTrue(productsPage.verifyThatProductHasBeenAddedToCart("REMOVE"), "Product is not added to cart");
 
     }
 
@@ -38,7 +38,7 @@ public class ProductPageTest extends TestBase {
         productsPage.tapOnProductName("Sauce Labs Bike Light");
         productsPage.tapOnAddToCartButton();
         productsPage.tapOnRemoveButton();
-        productsPage.verifyThatProductHasBeenRemovedFromCart("REMOVE");
+        Assert.assertTrue(productsPage.verifyThatProductHasBeenRemovedFromCart("ADD TO CART"), "Product is not removed from cart");
     }
 
     @Test(priority = 3)
