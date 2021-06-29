@@ -89,6 +89,7 @@ public class ProductsPage extends TestBase {
     }
 
     public boolean verifyThatProductHasBeenAddedToCart(String text){
+        System.out.println("str---"+btnRemoveFromCart.getText());
    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.ViewGroup[@content-desc='test-REMOVE']")));
 
       if(btnRemoveFromCart.isDisplayed()){
@@ -97,8 +98,6 @@ public class ProductsPage extends TestBase {
    return false;
     }
     }
-
-
 
     public boolean verifyThatProductHasBeenRemovedFromCart(String text){
         if(btnAddToCart.isDisplayed()){
