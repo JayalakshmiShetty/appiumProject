@@ -173,7 +173,7 @@ public static void tapOnElement(MobileElement element){
 	}
 
 
-	public static String[] ReadExcelValues(String SheetName, String TestCaseRef) throws Exception
+	public static String[] readExcelValues(String SheetName, String TestCaseRef) throws Exception
 	{
 		int rowNum = GetRowNumberForSpecificTest(SheetName, TestCaseRef);
 		FileInputStream fs = null;
@@ -201,10 +201,11 @@ public static void tapOnElement(MobileElement element){
 				value[i]=String.valueOf((int) cell.getNumericCellValue());
 			}
 
-		}String[]newValue=Arrays.copyOfRange(value, 1, value.length);
+
+		}
+		String[]newValue=Arrays.copyOfRange(value, 1, value.length);
 		return newValue;
 	}
-
 
 	public static String GetSpecificParameterValueForGivenTestFromExcel(String SheetName, String Parameter, String TestCaseRef) throws Exception{
 		String val=null;

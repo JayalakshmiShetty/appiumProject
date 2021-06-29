@@ -3,18 +3,14 @@ package com.pages;
 import com.base.TestBase;
 import com.util.TestUtil;
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.annotations.Test;
 
 import java.util.List;
 
-import static com.base.TestBase.wait;
 
 public class ProductsPage extends TestBase {
 
@@ -32,6 +28,9 @@ public class ProductsPage extends TestBase {
 
     @AndroidFindBy(xpath ="/android.view.ViewGroup[@content-desc='test-REMOVE']")
     MobileElement btnRemoveFromCart;
+
+    @AndroidFindBy(xpath="//android.view.ViewGroup[@content-desc='test-BACK TO PRODUCTS']")
+    MobileElement backToProductBtn;
 
     @AndroidFindBy(xpath="//android.view.ViewGroup[@content-desc='test-Cart']")
     MobileElement cartIcon;
@@ -51,7 +50,7 @@ public class ProductsPage extends TestBase {
     @AndroidFindBy(xpath="//android.view.ViewGroup[@content-desc='test-CONTINUE']")
     MobileElement continueBtn;
 
-    @AndroidFindBy(xpath="//android.widget.ScrollView[@content-desc='test-CHECKOUT: COMPLETE!']")
+    @AndroidFindBy(xpath="//android.view.ViewGroup[@content-desc='test-BACK TO PRODUCTS']")
     MobileElement checkoutMessage;
 
 
@@ -59,6 +58,11 @@ public class ProductsPage extends TestBase {
     public void tapOnProductImage(){
         productImage.click();
     }
+
+    public void tapOnProductName(String text){
+        TestUtil.scrollAndTapOnText(this.driver, text);
+    }
+
 
     public void tapOnCheckoutButton(){
         checkoutBtn.click();
@@ -76,10 +80,29 @@ public class ProductsPage extends TestBase {
         TestUtil.scrollAndTapOnText(this.driver, "FINISH");
     }
 
-    public void verifyThatCheckoutIsSuccesful(String text){
-        wait.until(ExpectedConditions.textToBePresentInElement(checkoutMessage, text));
+    public void verifyThatCheckoutIsSuccessful(String text){
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.ViewGroup[@content-desc='test-BACK TO PRODUCTS']")));
+    }
+    public void verifyThatCheckoutInfoIsInvaid(){
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.ViewGroup[@content-desc='test-CONTINUE']")));
     }
 
+    public boolean verifyThatProductHasBeenAddedToCart(String text){
+
+   if(btnAddToCart.getText().equalsIgnoreCase(text)){
+       return true;
+   }else{
+   return false;
+    }}
+
+    public boolean verifyThatProductHasBeenRemovedFromCart(String text){
+
+    }
+
+    public void verifyProductDetailsPage(){
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.ViewGroup[@content-desc='test-BACK TO PRODUCTS']")));
+
+    }
 
     public void enterCheckoutInformation(String firstName, String lastName, String postalCode){
         inputFirstname.sendKeys(firstName);
@@ -93,6 +116,7 @@ public class ProductsPage extends TestBase {
     }
 
     public void tapOnAddToCartButton(){
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.ViewGroup[@content-desc='test-BACK TO PRODUCTS']")));
         TestUtil.scrollAndTapOnText(this.driver, "ADD TO CART");
     }
 

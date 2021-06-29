@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="KlipClear Application Test Automation Test Suite">
+<suite name="SwagLabs Application Test Automation Test Suite">
 
 	<listeners>
 		<listener class-name="com.Listeners.ExtentReporterNG" />
@@ -10,13 +10,12 @@
 	</listeners> 
 
 
-	<test name="Amazon Mobile App Test Cases Chrome">
+	<test name="SwagLabs Mobile App Test Cases">
 
 		<classes>
-			<class name="com.tests.SettingsPageTest"></class>
-			<class name="com.tests.ProductsPageTest"></class>
-			<class name="com.tests.ShopByDepartmentPageTest"></class>
-			<class name="com.tests.TodaysDealPageTest"></class>
+
+			<class name="com.tests.ProductPageTest"></class>
+
 				</classes>
 
 	</test>
