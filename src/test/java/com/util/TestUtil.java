@@ -73,13 +73,13 @@ public static void tapOnElement(MobileElement element){
 				.release().perform();
 	}
 
-	public static void scrollAndTapOnText(AndroidDriver driver, String text)
-	{
+	public static void scrollAndTapOnText(AndroidDriver driver, String text) throws InterruptedException {
+		Thread.sleep(700);
 		driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\""+text+"\").instance(0))").click();
 	}
 
-	public static void scrollTillFullTextAndTap( AndroidDriver driver, String text){
-
+	public static void scrollTillFullTextAndTap( AndroidDriver driver, String text) throws InterruptedException {
+		Thread.sleep(700);
 		driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().text(\""+text+"\").instance(0))").click();
 	}
 

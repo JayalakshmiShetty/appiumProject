@@ -20,13 +20,13 @@ public class ProductsPage extends TestBase {
     }
 //	//Page Factory - OR for the Home page or Dashboard
 
-    @AndroidFindBy(xpath ="(//android.view.ViewGroup[@content-desc=\"test-Item\"])[1]/android.view.ViewGroup/android.widget.ImageView")
+    @AndroidFindBy(xpath ="(//android.view.ViewGroup[@content-desc='test-Item'])[1]/android.view.ViewGroup/android.widget.ImageView")
     MobileElement productImage;
 
-    @AndroidFindBy(xpath ="(//android.view.ViewGroup[@content-desc='test-ADD TO CART'])[1]")
+    @AndroidFindBy(xpath ="//android.view.ViewGroup[@content-desc='test-ADD TO CART']")
     MobileElement btnAddToCart;
 
-    @AndroidFindBy(xpath ="/android.view.ViewGroup[@content-desc='test-REMOVE']")
+    @AndroidFindBy(xpath ="//android.view.ViewGroup[@content-desc='test-REMOVE']")
     MobileElement btnRemoveFromCart;
 
     @AndroidFindBy(xpath="//android.view.ViewGroup[@content-desc='test-BACK TO PRODUCTS']")
@@ -59,7 +59,7 @@ public class ProductsPage extends TestBase {
         productImage.click();
     }
 
-    public void tapOnProductName(String text){
+    public void tapOnProductName(String text) throws InterruptedException {
         TestUtil.scrollAndTapOnText(this.driver, text);
     }
 
@@ -76,7 +76,7 @@ public class ProductsPage extends TestBase {
         continueBtn.click();
     }
 
-    public void tapOnFinishButton(){
+    public void tapOnFinishButton() throws InterruptedException {
         TestUtil.scrollAndTapOnText(this.driver, "FINISH");
     }
 
@@ -88,15 +88,24 @@ public class ProductsPage extends TestBase {
     }
 
     public boolean verifyThatProductHasBeenAddedToCart(String text){
+        System.out.println("str---"+btnRemoveFromCart.getText());
+   wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.ViewGroup[@content-desc='test-REMOVE']")));
 
-   if(btnAddToCart.getText().equalsIgnoreCase(text)){
+      if(btnRemoveFromCart.isDisplayed()){
        return true;
    }else{
    return false;
-    }}
+    }
+    }
+
+
 
     public boolean verifyThatProductHasBeenRemovedFromCart(String text){
-
+        if(btnAddToCart.isDisplayed()){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public void verifyProductDetailsPage(){
@@ -111,11 +120,12 @@ public class ProductsPage extends TestBase {
     }
 
 
-    public void tapOnRemoveButton(){
+    public void tapOnRemoveButton() throws InterruptedException {
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.ViewGroup[@content-desc='test-BACK TO PRODUCTS']")));
         TestUtil.scrollAndTapOnText(this.driver, "REMOVE");
     }
 
-    public void tapOnAddToCartButton(){
+    public void tapOnAddToCartButton() throws InterruptedException {
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.ViewGroup[@content-desc='test-BACK TO PRODUCTS']")));
         TestUtil.scrollAndTapOnText(this.driver, "ADD TO CART");
     }

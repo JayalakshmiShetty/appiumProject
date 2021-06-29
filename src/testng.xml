@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="SwagLabs Application Test Automation Test Suite">
+
+	<listeners>
+		<listener class-name="com.Listeners.ExtentReporterNG" />
+		<listener class-name="com.Listeners.ExtentReporterNG"/>
+
+
+	</listeners> 
+
+
+	<test name="SwagLabs Mobile App Test Cases">
+
+		<classes>
+
+			<class name="com.tests.ProductPageTest"></class>
+
+				</classes>
+
+	</test>
+
+</suite>
+		
