@@ -47,7 +47,7 @@ public class ProductPageTest extends TestBase {
         productsPage.verifyProductDetailsPage();
     }
 
-    @Test(priority = 3)
+    @Test(priority = 4)
     public void verifyCheckoutWithValidCheckoutInfo() throws Exception {
         String[] data= TestUtil.readExcelValues("ProductsPage", "product_page_01");
         productsPage.tapOnProductImage();
@@ -60,7 +60,7 @@ public class ProductPageTest extends TestBase {
         productsPage.verifyThatCheckoutIsSuccessful("Your order has been dispatched");
     }
 
-    @Test(priority = 4)
+    @Test(priority = 5)
     public void verifyCheckoutWithInvalidCheckoutInfo() throws Exception {
         String[] data= TestUtil.readExcelValues("ProductsPage", "product_page_02");
         productsPage.tapOnProductImage();

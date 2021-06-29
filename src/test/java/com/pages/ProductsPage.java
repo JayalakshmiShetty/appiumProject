@@ -50,7 +50,8 @@ public class ProductsPage extends TestBase {
     @AndroidFindBy(xpath="//android.view.ViewGroup[@content-desc='test-CONTINUE']")
     MobileElement continueBtn;
 
-    @AndroidFindBy(xpath="//android.view.ViewGroup[@content-desc='test-BACK TO PRODUCTS']")
+    @AndroidFindBy(xpath="\t\n" +
+            "//android.widget.ScrollView[@content-desc='test-CHECKOUT: COMPLETE!']/android.view.ViewGroup/android.widget.TextView[2]")
     MobileElement checkoutMessage;
 
 
@@ -81,14 +82,13 @@ public class ProductsPage extends TestBase {
     }
 
     public void verifyThatCheckoutIsSuccessful(String text){
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.ViewGroup[@content-desc='test-BACK TO PRODUCTS']")));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.ScrollView[@content-desc='test-CHECKOUT: COMPLETE!']/android.view.ViewGroup/android.widget.TextView[2]")));
     }
     public void verifyThatCheckoutInfoIsInvaid(){
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.ViewGroup[@content-desc='test-CONTINUE']")));
     }
 
     public boolean verifyThatProductHasBeenAddedToCart(String text){
-        System.out.println("str---"+btnRemoveFromCart.getText());
    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.ViewGroup[@content-desc='test-REMOVE']")));
 
       if(btnRemoveFromCart.isDisplayed()){
