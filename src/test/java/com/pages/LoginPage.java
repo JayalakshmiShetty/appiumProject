@@ -30,7 +30,7 @@ public class LoginPage extends TestBase {
     @AndroidFindBy(xpath="//android.view.ViewGroup[@content-desc='test-standard_user']/android.widget.TextView")
     MobileElement stdUserAutofill;
 
-    public void loginWithCredentials(String username, String password){
+    public void loginWithCredentials(String username, String password) throws InterruptedException {
         enterUserName(username);
         enterPassword(password);
         tapOnLogInButton();
@@ -49,15 +49,16 @@ public class LoginPage extends TestBase {
         inputPassword.sendKeys(password);
     }
 
-    public void tapOnLogInButton() {
+    public void tapOnLogInButton() throws InterruptedException {
         TestUtil.scrollAndTapOnText(this.driver,"LOGIN");
     }
 
-    public void tapOnStandardUserAutoFill() {
+    public void tapOnStandardUserAutoFill() throws InterruptedException {
+
         TestUtil.scrollAndTapOnText(this.driver,"standard_user");
     }
 
-    public ProductsPage loginToStandardUser(){
+    public ProductsPage loginToStandardUser() throws InterruptedException {
         tapOnStandardUserAutoFill();
         tapOnLogInButton();
         return productsPage;
