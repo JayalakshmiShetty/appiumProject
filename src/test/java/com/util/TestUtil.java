@@ -74,7 +74,7 @@ public static void tapOnElement(MobileElement element){
 	}
 
 	public static void scrollAndTapOnText(AndroidDriver driver, String text) throws InterruptedException {
-		Thread.sleep(700);
+		Thread.sleep(500);
 		driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\""+text+"\").instance(0))").click();
 	}
 

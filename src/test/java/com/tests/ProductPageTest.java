@@ -47,30 +47,6 @@ public class ProductPageTest extends TestBase {
         productsPage.verifyProductDetailsPage();
     }
 
-    @Test(priority = 4)
-    public void verifyCheckoutWithValidCheckoutInfo() throws Exception {
-        String[] data= TestUtil.readExcelValues("ProductsPage", "product_page_01");
-        productsPage.tapOnProductImage();
-        productsPage.tapOnAddToCartButton();
-        productsPage.tapOnCartIcon();
-        productsPage.tapOnCheckoutButton();
-        productsPage.enterCheckoutInformation(data[0], data[1], data[2]);
-        productsPage.tapOnContinueButton();
-        productsPage.tapOnFinishButton();
-        productsPage.verifyThatCheckoutIsSuccessful("Your order has been dispatched");
-    }
-
-    @Test(priority = 5)
-    public void verifyCheckoutWithInvalidCheckoutInfo() throws Exception {
-        String[] data= TestUtil.readExcelValues("ProductsPage", "product_page_02");
-        productsPage.tapOnProductImage();
-        productsPage.tapOnAddToCartButton();
-        productsPage.tapOnCartIcon();
-        productsPage.tapOnCheckoutButton();
-        productsPage.enterCheckoutInformation(data[0], data[1], data[2]);
-        productsPage.tapOnContinueButton();
-        productsPage.verifyThatCheckoutInfoIsInvaid();
-    }
 
 
     @AfterMethod

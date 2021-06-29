@@ -13,8 +13,9 @@
 	<test name="SwagLabs Mobile App Test Cases">
 
 		<classes>
-
+			<class name="com.tests.CheckoutPageTest"></class>
 			<class name="com.tests.ProductPageTest"></class>
+
 
 				</classes>
 
